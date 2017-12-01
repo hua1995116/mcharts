@@ -1,0 +1,20 @@
+{
+  "name": "mcharts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hua1995116/mcharts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hua1995116/mcharts/issues"
+  },
+  "homepage": "https://github.com/hua1995116/mcharts#readme"
+}
