@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.logInfo = {};  //统计页面加载时间
+        window.logInfo.openTime = performance.timing.navigationStart;
+        window.logInfo.whiteScreenTime = +new Date() - window.logInfo.openTime;
+        document.addEventListener('DOMContentLoaded',function (event) {
+            window.logInfo.readyTime = +new Date() - window.logInfo.openTime;
+        });
+        window.onload = function () {
+          window.logInfo.allloadTime = +new Date() - window.logInfo.openTime;
+          var timname = {
+                whiteScreenTime: '白屏时间',
+                readyTime: '用户可操作时间',
+                allloadTime: '总下载时间'
+            };
+            var logStr = '';
+            for (var i in timname) {
+                console.warn(timname[i] + ':' + window.logInfo[i] + 'ms');
+                logStr += '&' + i + '=' + window.logInfo[i] + 'ms';
+            }
+          (new Image()).src = '/action?action=speedlog' + logStr;
+      };
+      
+    </script>
+</head>
+<body>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div> 
+</body>
+</html>
