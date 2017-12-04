@@ -68,10 +68,20 @@ setInterval(function () {
             console.log("    " + i + ": " + reply);
             errarr.push(reply);
         });
+        const dir = './errorData/'
         if (errarr.length > 0) {
             errarr.push('\n');
             const data = errarr.join('\n');
-            const dir = './errorData/'
+            fs.appendFile(`${dir}${new Date().toLocaleDateString()}error.txt`, data, 'utf8', function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('error success');
+                    client.del('error key');
+                }
+            })
+        } else {
+            const data = 'msg=null&nowTime=' + new Date().getTime()+'\n';
             fs.appendFile(`${dir}${new Date().toLocaleDateString()}error.txt`, data, 'utf8', function (err) {
                 if (err) {
                     console.log(err);

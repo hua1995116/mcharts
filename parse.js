@@ -36,13 +36,21 @@ function parseError(data) {
     let time = 0;
     data.forEach((value, index, array) => {
         if(!!value) {
-            if(!time) {
-                value = value.split('&');
-                // console.log(value);
-                value = value[value.length -1 ].split('=')[1];
-                time = value;
+            value = value.split('&');
+            if(value[0].split('=')[1] == 'null') {
+                time = value[value.length -1].split('=')[1];
+                arr.push(`${time},0`);
+                time = 0;
+            } else {
+                if(!time) {
+                    // value = value.split('&');
+                    // console.log(value);
+                    value = value[value.length -1].split('=')[1];
+                    time = value;
+                }
+                k++; 
             }
-            k++;  
+             
         } else {
             if(time&&k) {
                 arr.push(`${time},${k}`);
