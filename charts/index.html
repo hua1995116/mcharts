@@ -12,15 +12,62 @@
 	<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
     <script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
     <style>
+    html,body{
+        margin: 0;
+        padding: 0;
+        background: #000;
+    }
+    .contain div{
+        margin-top: 20px;
+    }
     .highcharts-selection-marker {
         background: #fff;
+    }
+    .header-list-info {
+        display: flex;
+        padding: 10px;
+    }
+    .header-item {
+        display: flex;
+        flex-direction: column ;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #fff;
+        width: 200px;
+        height: 150px;
+        margin: 5px 10px;
+        padding: 5px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+    }
+    .item-row {
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+    }
+    .bottom {
+        border-bottom: 1px solid #ddd;
     }
     </style>
 </head>
 <body>
-	<div id="container" style="min-width:400px;height:400px"></div>
+<header>
+    <div class="header-list-info">
+        <div class="header-item">
+            <div class="item-row bottom">PV</div>
+            <div class="item-row">4123</div>
+        </div>
+    </div>
+</header>
+<div class="contain">
+    <div id="container" style="min-width:400px;height:400px"></div>
+    <div id="pipecontainer" style="width:400px;height:400px;margin:20px auto 0"></div>
+</div>
+
 <div class="message"></div>
-<div id="csv">时间,白屏时间,用户可操作时间,总下载时间
+<!-- <div id="csv">时间,白屏时间,用户可操作时间,总下载时间
 1511936983445,159,159,160
 1511936984388,150,150,151
 1511936984984,138,138,139
@@ -33,30 +80,48 @@
 1511937049265,156,156,156
 1511937050269,142,142,142
 1511937051966,135,135,136
-1511937053317,134,134,135</div>
+1511937053317,134,134,135</div> -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 Highcharts.setOptions({ 
     global: { useUTC: false }, 
-    
+    chart: {
+        backgroundColor: '#000',
+    },
 });   
-var chart = null;
-// axios.get('./data.csv')
-//   .then(function (response) {
-//     // console.log(response);
-//     console.log(response.data);
-//     chartInit(response.data);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
-chartInit(document.getElementById('csv').innerHTML);
+var dir = './csvData/';
+var date = new Date().toLocaleDateString().replace(/\//g, '-');
+var timeurl =  dir + date + 'time.csv';
+var mobileurl = dir + date + 'mobile.csv';
+var PVUVurl = dir + date + 'PVUV.csv';
+// chartInit(document.getElementById('csv').innerHTML);
+axios.get(timeurl)
+  .then(function (response) {
+    chartInit(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+axios.get(mobileurl)
+  .then(function (response) {
+    pieInit(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+axios.get(PVUVurl)
+  .then(function (response) {
+      console.log(response.data);
+    PVUVInit(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
 function chartInit(csv) {
+    var chart = null;
     chart = Highcharts.chart('container', {
-        chart: {
-            backgroundColor: '#000',
-        },
         data: {
             csv: csv
         },
@@ -132,9 +197,9 @@ function chartInit(csv) {
                     events: {
                         // 数据点点击事件
                         // 其中 e 变量为事件对象，this 为当前数据点对象
-                        click: function (e) {
-                            $('.message').html( Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>  访问量：' +this.y );
-                        }
+                        // click: function (e) {
+                        //     $('.message').html( Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>  访问量：' +this.y );
+                        // }
                     }
                 },
                 marker: {
@@ -144,7 +209,72 @@ function chartInit(csv) {
         }
     });
 }
+
+function pieInit(csv) {
+    var arr = [];
+    csv = csv.split('\n');
+    for(var i = 0; i < csv.length; i++) {
+        if(i == 0 && csv[i] !== null) {
+            var numbers = csv[i].split(',');
+            arr.push({
+                name:  numbers[0],
+                y: parseInt(numbers[1]),
+                sliced: true,
+                selected: true
+            })
+        } else {
+            arr.push([
+                numbers[0],
+                parseInt(numbers[1])
+            ]);
+        }
+    }
+    // console.log(arr);
+    var chart = null;
+    chart = Highcharts.chart('pipecontainer', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: '各浏览器浏览量占比'
+        },
+        tooltip: {
+            headerFormat: '{series.name}<br>',
+            pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '浏览器访问量占比',
+            data: arr
+        }]
+    })
+}
     
+function PVUVInit(csv) {
+    var header = document.querySelector('.header-list-info');
+    var data = csv.split(',');
+    var html = '';
+    for(var i = 0 ; i < data.length; i ++) {
+        var info = data[i].split(':');
+        html += '<div class="header-item"><div class="item-row bottom">'+info[0]+'</div><div class="item-row">'+info[1]+'</div></div>';
+    }
+    header.innerHTML = html;
+}
 </script>
 </body>
 </html>

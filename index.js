@@ -51,7 +51,8 @@ setInterval(function () {
         if (arr.length > 0) {
             arr.push('\n');
             const data = arr.join('\n');
-            fs.appendFile(`${new Date().toLocaleDateString()}data.txt`, data, 'utf8', function (err) {
+            const dir = './originalData/'
+            fs.appendFile(`${dir}${new Date().toLocaleDateString()}data.txt`, data, 'utf8', function (err) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -70,7 +71,8 @@ setInterval(function () {
         if (errarr.length > 0) {
             errarr.push('\n');
             const data = errarr.join('\n');
-            fs.appendFile(`${new Date().toLocaleDateString()}error.txt`, data, 'utf8', function (err) {
+            const dir = './errorData/'
+            fs.appendFile(`${dir}${new Date().toLocaleDateString()}error.txt`, data, 'utf8', function (err) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -80,7 +82,7 @@ setInterval(function () {
             })
         }
     });
-}, 1000 * 10);
+}, 1000 * 60);
 
 
 server.listen(3000);

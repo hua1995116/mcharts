@@ -1,2 +1,0 @@
-user_ip=127.0.0.1&whiteScreenTime=177ms&readyTime=181ms&allloadTime=192ms&nowTime=1512121966652&mobile=webKit
-
