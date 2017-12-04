@@ -3,7 +3,9 @@ const config = {
     jsonDir: './jsonData/',
     csvDir: '/csvData/',
     originalDir: './originalData/',
+    errorDir: './errorData/',
     Timetitle: '时间,白屏时间,用户可操作时间,总下载时间',
+    Errortitle: '时间,错误量',
     date: new Date().toLocaleDateString(),
 }
 
@@ -21,6 +23,42 @@ fs.readFile(`${config.originalDir}${config.date}data.txt`, 'utf8', (err, data) =
         }
     })
 });
+
+fs.readFile(`${config.errorDir}${config.date}error.txt`, 'utf8', (err, data) => {
+    parseError(data);
+});
+
+function parseError(data) {
+    data = data.split('\n');
+    const arr = [];
+    arr.push(config.Errortitle);
+    let k = 0;
+    let time = 0;
+    data.forEach((value, index, array) => {
+        if(!!value) {
+            if(!time) {
+                value = value.split('&');
+                // console.log(value);
+                value = value[value.length -1 ].split('=')[1];
+                time = value;
+            }
+            k++;  
+        } else {
+            if(time&&k) {
+                arr.push(`${time},${k}`);
+                time = 0;
+                k = 0;
+            }
+        }
+    })
+    fs.writeFile(`./charts${config.csvDir}${config.date}error.csv`,arr.join('\n'), (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('error success');
+        }
+    })
+}
 
 /**
  * 
