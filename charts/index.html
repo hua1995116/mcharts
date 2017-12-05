@@ -296,8 +296,8 @@ function pieInit(csv) {
     var arr = [];
     csv = csv.split('\n');
     for(var i = 0; i < csv.length; i++) {
+        var numbers = csv[i].split(',');
         if(i == 0 && csv[i] !== null) {
-            var numbers = csv[i].split(',');
             arr.push({
                 name:  numbers[0],
                 y: parseInt(numbers[1]),
