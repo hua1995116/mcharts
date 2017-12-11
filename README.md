@@ -1,5 +1,12 @@
 # mcharts
 
+## introduction 
+
+node.js >= 6.0.0
+
+redis >= 2.8.0
+
+
 ## start
 ```
 
