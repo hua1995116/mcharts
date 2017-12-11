@@ -2,7 +2,7 @@
   "name": "mcharts",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "express.js",
   "dependencies": {
     "express": "^4.16.2",
     "redis": "^2.8.0"
