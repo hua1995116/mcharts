@@ -43,8 +43,6 @@ function parseError(data) {
                 time = 0;
             } else {
                 if(!time) {
-                    // value = value.split('&');
-                    // console.log(value);
                     value = value[value.length -1].split('=')[1];
                     time = value;
                 }

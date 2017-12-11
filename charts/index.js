@@ -3,9 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 const app = http.createServer((request, response) => {
-    // fs.readFile('./index.html', 'utf8', (err, data) => {
-    //     res.end(data);
-    // })
 
     var filePath = '.' + request.url;
     if (filePath == './')
@@ -55,7 +52,5 @@ const app = http.createServer((request, response) => {
         }
     });
 });
-
-
 
 app.listen(8888);
