@@ -9,8 +9,8 @@ router.get('/', function (req, res, next) {
 app.use(router);
 app.use(performance({
 	time: 10, // 秒为单位
-	dataDir: './originalData', // 数据的目录
-	errDir: './errorData' // 报错的目录
+	originalDir: './originalData', // 数据的目录
+	errorDir: './errorData' // 报错的目录
 }))
 app.use(express.static('./'));
 const server = app.listen(3000)

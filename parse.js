@@ -1,32 +1,34 @@
 const fs = require('fs');
+
 const config = {
-    jsonDir: './jsonData/',
-    csvDir: '/csvData/',
-    originalDir: './originalData/',
-    errorDir: './errorData/',
+    originalDir: './originalData',
+    errorDir: './errorData',
+    jsonDir: './jsonData',
+    csvDir: '/csvData',
     Timetitle: '时间,白屏时间,用户可操作时间,总下载时间',
     Errortitle: '时间,错误量',
     date: new Date().toLocaleDateString(),
 }
 
-
-fs.readFile(`${config.originalDir}${config.date}data.txt`, 'utf8', (err, data) => {
-    const jsondata = parse(data)
-    parseTime(data);
-    parseMobile(jsondata);
-    parsePVUV(jsondata);
-    fs.writeFile(`${config.jsonDir}${config.date}data.json`, JSON.stringify(jsondata), (err) => {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log('data write right');
-        }
-    })
-});
-
-fs.readFile(`${config.errorDir}${config.date}error.txt`, 'utf8', (err, data) => {
-    parseError(data);
-});
+function main() {
+    fs.readFile(`${config.originalDir}/${config.date}data.txt`, 'utf8', (err, data) => {
+        const jsondata = parse(data)
+        parseTime(data);
+        parseMobile(jsondata);
+        parsePVUV(jsondata);
+        // fs.writeFile(`${config.jsonDir}/${config.date}data.json`, JSON.stringify(jsondata), (err) => {
+        //     if(err) {
+        //         console.log(err);
+        //     } else {
+        //         console.log('data write right');
+        //     }
+        // });
+    });
+    
+    fs.readFile(`${config.errorDir}/${config.date}error.txt`, 'utf8', (err, data) => {
+        parseError(data);
+    });
+}
 
 function parseError(data) {
     data = data.split('\n');
@@ -57,7 +59,7 @@ function parseError(data) {
             }
         }
     })
-    fs.writeFile(`./charts${config.csvDir}${config.date}error.csv`,arr.join('\n'), (err) => {
+    fs.writeFile(`./charts${config.csvDir}/${config.date}error.csv`,arr.join('\n'), (err) => {
         if (err) {
             console.log(err);
         } else {
@@ -138,7 +140,7 @@ function parseTime(data) {
         
     })
     // 写入文件
-    fs.writeFile(`./charts${config.csvDir}${config.date}time.csv`,arr.join('\n'), (err) => {
+    fs.writeFile(`./charts${config.csvDir}/${config.date}time.csv`,arr.join('\n'), (err) => {
         if (err) {
             console.log(err);
         } else {
@@ -164,7 +166,7 @@ function parseMobile(data) {
         arr.push(`${i},${persent}`);
     }
     // 写入文件
-    fs.writeFile(`./charts${config.csvDir}${config.date}mobile.csv`,arr.join('\n'), (err) => {
+    fs.writeFile(`./charts${config.csvDir}/${config.date}mobile.csv`,arr.join('\n'), (err) => {
         if (err) {
             console.log(err);
         } else {
@@ -187,7 +189,7 @@ function parsePVUV(data) {
     // 合并对象后的长度
     const UV = Object.keys(obj).length;
     // 写入文件
-    fs.writeFile(`./charts${config.csvDir}${config.date}PVUV.csv`, `PV:${PV},UV:${UV}`, (err) => {
+    fs.writeFile(`./charts${config.csvDir}/${config.date}PVUV.csv`, `PV:${PV},UV:${UV}`, (err) => {
         if (err) {
             console.log(err);
         } else {
@@ -195,3 +197,5 @@ function parsePVUV(data) {
         }
     })
 }
+main();
+module.exports = main;

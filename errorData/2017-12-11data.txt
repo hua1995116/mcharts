@@ -1,3 +1,0 @@
-user_ip=::1&whiteScreenTime=77ms&readyTime=77ms&allloadTime=78ms&nowTime=1512961538325&mobile=webKit
-user_ip=::1&whiteScreenTime=32649ms&readyTime=32650ms&allloadTime=32651ms&nowTime=1512961536044&mobile=webKit
-

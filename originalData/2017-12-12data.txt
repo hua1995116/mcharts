@@ -1,0 +1,8 @@
+user_ip=127.0.0.1&whiteScreenTime=169&readyTime=175&allloadTime=187&mobile=webKit&nowTime=1513071209447
+user_ip=127.0.0.1&whiteScreenTime=193&readyTime=199&allloadTime=212&mobile=webKit&nowTime=1513071207948
+
+user_ip=127.0.0.1&whiteScreenTime=163&readyTime=167&allloadTime=179&mobile=webKit&nowTime=1513071218840
+user_ip=127.0.0.1&whiteScreenTime=174&readyTime=178&allloadTime=192&mobile=webKit&nowTime=1513071217145
+
+user_ip=127.0.0.1&whiteScreenTime=185&readyTime=192&allloadTime=208&mobile=webKit&nowTime=1513071388941
+
