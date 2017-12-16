@@ -7,7 +7,7 @@ node.js >= 6.0.0
 redis >= 2.8.0
 
 
-## start
+## Step1
 ```
 
 client server: 
@@ -22,7 +22,7 @@ look at http://127.0.0.1:3000/
 
 waiting for 10 second
 
-## then 
+## Step2
 
 ```
 
@@ -30,7 +30,7 @@ node parse.js
 
 ```
 
-## end
+## Step3
 
 managerment server:
 
