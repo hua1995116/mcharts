@@ -22,7 +22,7 @@ mac redis/etc
 
 redis-server redis.conf 
 
-令启一个窗口
+另启一个窗口
 
 redis-cli -h 127.0.0.1 -p 6379
 
