@@ -56,7 +56,7 @@ function parseError(data) {
              
         } else {
             if(time&&k) {
-                arr.push(`${time},${k}`);
+                arr.push(`${time.replace('\r','')},${k}`);
                 time = 0;
                 k = 0;
             }
