@@ -117,6 +117,9 @@ function parseTime(data) {
         if(!!value) {
             const obj = {};
             value = value.split('&');
+            if(value.length <= 1) {
+                continue;
+            }
             value.forEach((item, i) => {
                 const name = item.split('=')[0];
                 const val = item.split('=')[1];
