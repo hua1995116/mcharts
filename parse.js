@@ -12,6 +12,9 @@ const config = {
 
 function main() {
     fs.readFile(`${config.originalDir}/${config.date}data.txt`, 'utf8', (err, data) => {
+        if(err) {
+            return;
+        }
         const jsondata = parse(data)
         parseTime(data);
         parseMobile(jsondata);
@@ -127,7 +130,7 @@ function parseTime(data) {
             allloadTime += parseInt(obj['allloadTime']);
             k++;
         } else {
-            if(whiteScreenTime&&readyTime&&allloadTime) {
+            // if(whiteScreenTime&&readyTime&&allloadTime) {
                 // 以csv方式写入arr数组,并进行清零
                 arr.push(`${time},${parseInt(whiteScreenTime/k)},${parseInt(readyTime/k)},${parseInt(allloadTime/k)}`)
                 time = 0;
@@ -135,10 +138,11 @@ function parseTime(data) {
                 readyTime = 0;
                 allloadTime = 0;
                 k = 0;
-            }     
+            // }     
         } 
         
     })
+    arr.pop();
     // 写入文件
     fs.writeFile(`./charts${config.csvDir}/${config.date}time.csv`,arr.join('\n'), (err) => {
         if (err) {
