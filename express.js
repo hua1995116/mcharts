@@ -15,6 +15,6 @@ app.use(performance({
 }))
 // setInterval(function() {
 // 	parseData();
-// }, 1000 * 60);
+// }, 1000 * 15);
 app.use(express.static('./'));
 const server = app.listen(3000)

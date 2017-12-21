@@ -112,7 +112,6 @@ function parseTime(data) {
     let readyTime = 0;
     let allloadTime = 0;
     let k = 0;
-    arr.push(config.Timetitle);
     data.forEach((value, index, array) => {  
         if(!!value) {
             const obj = {};
@@ -135,7 +134,13 @@ function parseTime(data) {
         } else {
             // if(whiteScreenTime&&readyTime&&allloadTime) {
                 // 以csv方式写入arr数组,并进行清零
-                arr.push(`${time},${parseInt(whiteScreenTime/k)},${parseInt(readyTime/k)},${parseInt(allloadTime/k)}`)
+                // arr.push(`${time},${parseInt(whiteScreenTime/k)},${parseInt(readyTime/k)},${parseInt(allloadTime/k)}`)
+                arr.push({
+                    time: time,
+                    whiteScreenTime: parseInt(whiteScreenTime/k),
+                    readyTime:parseInt(readyTime/k),
+                    allloadTime:parseInt(allloadTime/k),
+                });
                 time = 0;
                 whiteScreenTime = 0;
                 readyTime = 0;
@@ -146,8 +151,16 @@ function parseTime(data) {
         
     })
     arr.pop();
+    arr.sort(function(a, b) {
+        return a.time - b.time;
+    });
+    const newarr = arr.map((item, index) => {
+        return `${item.time},${item.whiteScreenTime},${item.readyTime},${item.allloadTime}`
+    })
+    newarr.unshift(config.Timetitle);
+    
     // 写入文件
-    fs.writeFile(`./charts${config.csvDir}/${config.date}time.csv`,arr.join('\n'), (err) => {
+    fs.writeFile(`./charts${config.csvDir}/${config.date}time.csv`,newarr.join('\n'), (err) => {
         if (err) {
             console.log(err);
         } else {
