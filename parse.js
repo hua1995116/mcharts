@@ -9,6 +9,8 @@ const config = {
     Errortitle: '时间,错误量',
     date: new Date().toLocaleDateString(),
 }
+const ERROR_DATA = 0;
+
 
 function main() {
     fs.readFile(`${config.originalDir}/${config.date}data.txt`, 'utf8', (err, data) => {
@@ -112,18 +114,24 @@ function parseTime(data) {
     let readyTime = 0;
     let allloadTime = 0;
     let k = 0;
-    data.forEach((value, index, array) => {  
+
+    for(let i = 0; i < data.length; i++) {
+        let value = data[i];
+        console.log(value);
         if(!!value) {
             const obj = {};
             value = value.split('&');
             if(value.length <= 1) {
-                return;
+               continue;
             }
             value.forEach((item, i) => {
                 const name = item.split('=')[0];
                 const val = item.split('=')[1];
                 obj[name] = val;
             });
+            if(obj['whiteScreenTime'] > 20000 || obj['readyTime'] > 20000 || obj['allloadTime'] > 20000) {
+                continue;
+            }
             if(!time) {
                 time = obj['nowTime'];
             }
@@ -135,6 +143,9 @@ function parseTime(data) {
             // if(whiteScreenTime&&readyTime&&allloadTime) {
                 // 以csv方式写入arr数组,并进行清零
                 // arr.push(`${time},${parseInt(whiteScreenTime/k)},${parseInt(readyTime/k)},${parseInt(allloadTime/k)}`)
+                if(time === 0) {
+                    continue;
+                }
                 arr.push({
                     time: time,
                     whiteScreenTime: parseInt(whiteScreenTime/k),
@@ -148,9 +159,9 @@ function parseTime(data) {
                 k = 0;
             // }     
         } 
-        
-    })
-    arr.pop();
+    }
+    // console.log(arr);
+    // arr.pop();
     arr.sort(function(a, b) {
         return a.time - b.time;
     });
