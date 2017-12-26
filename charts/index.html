@@ -11,49 +11,7 @@
 	<script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>
 	<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
     <script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
-    <style>
-    html,body{
-        margin: 0;
-        padding: 0;
-        background: #000;
-    }
-    .contain div{
-        margin-top: 40px;
-    }
-    .highcharts-selection-marker {
-        background: #fff;
-    }
-    .header-list-info {
-        display: flex;
-        padding: 10px;
-    }
-    header h1 {
-        text-align: center;
-        color: #fff;
-    }
-    .header-item {
-        display: flex;
-        flex-direction: column ;
-        justify-content: center;
-        align-items: center;
-        width: 200px;
-        height: 150px;
-        margin: 5px 10px;
-        padding: 5px;
-        color: #fff;
-        font-size: 20px;
-        font-weight: 700;
-        text-align: center;
-    }
-    .item-row {
-        width: 100px;
-        height: 50px;
-        line-height: 50px;
-    }
-    .bottom {
-        border-bottom: 1px solid #ddd;
-    }
-    </style>
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
 <header>
@@ -66,9 +24,9 @@
     </div>
 </header>
 <div class="contain">
-    <div id="container" style="min-width:400px;height:400px"></div>
-    <div id="error-container" style="min-width:400px;height:400px"></div>
-    <div id="pipecontainer" style="width:400px;height:400px;margin:20px auto 0"></div>
+    <div id="container" class="broken-line" style="min-width:400px;min-height:400px"></div>
+    <div id="error-container" class="broken-line" style="min-width:400px;min-height:400px"></div>
+    <div id="pipecontainer" class="bin-line" style="width:400px;min-height:400px;margin:20px auto 0"></div>
 </div>
 
 <div class="message"></div>
@@ -77,7 +35,7 @@
 Highcharts.setOptions({ 
     global: { useUTC: false }, 
     chart: {
-        backgroundColor: '#000',
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
     },
 });   
 var dir = './csvData/';

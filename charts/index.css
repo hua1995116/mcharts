@@ -1,0 +1,50 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(0, 27, 56);
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+.contain .broken-line, .bin-line{
+    margin-top: 40px;
+}
+.highcharts-selection-marker {
+    background: #fff;
+}
+.header-list-info {
+    display: flex;
+    margin: 20px 30px;
+    background: rgba(255, 255, 255, 0.05);
+}
+header h1 {
+    text-align: center;
+    color: #fff;
+}
+.header-item {
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 150px;
+    margin: 5px 10px;
+    padding: 5px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.item-row {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+}
+.bottom {
+    border-bottom: 1px solid #ddd;
+}
+
+.broken-line {
+    margin: 20px 30px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.4);
+}
