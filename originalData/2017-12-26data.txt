@@ -2,3 +2,29 @@ user_ip=127.0.0.1&whiteScreenTime=204&readyTime=204&allloadTime=236&mobile=webKi
 
 user_ip=127.0.0.1&whiteScreenTime=1066&readyTime=1066&allloadTime=1189&mobile=webKit&nowTime=1514275310147
 
+user_ip=127.0.0.1&whiteScreenTime=231&readyTime=232&allloadTime=263&mobile=webKit&nowTime=1514282134384
+user_ip=127.0.0.1&whiteScreenTime=333&readyTime=333&allloadTime=380&mobile=webKit&nowTime=1514282131190
+
+user_ip=127.0.0.1&whiteScreenTime=185&readyTime=186&allloadTime=214&mobile=webKit&nowTime=1514282144752
+user_ip=127.0.0.1&whiteScreenTime=181&readyTime=182&allloadTime=213&mobile=webKit&nowTime=1514282143463
+user_ip=127.0.0.1&whiteScreenTime=179&readyTime=180&allloadTime=208&mobile=webKit&nowTime=1514282147067
+
+user_ip=127.0.0.1&whiteScreenTime=153&readyTime=172&allloadTime=200&mobile=webKit&nowTime=1514282156149
+user_ip=127.0.0.1&whiteScreenTime=156&readyTime=156&allloadTime=187&mobile=webKit&nowTime=1514282158404
+user_ip=127.0.0.1&whiteScreenTime=179&readyTime=179&allloadTime=209&mobile=webKit&nowTime=1514282154960
+
+user_ip=127.0.0.1&whiteScreenTime=154000&readyTime=155&allloadTime=183&mobile=webKit&nowTime=1514282167008
+user_ip=127.0.0.1&whiteScreenTime=157000&readyTime=157&allloadTime=185&mobile=webKit&nowTime=1514282165462
+user_ip=127.0.0.1&whiteScreenTime=156000&readyTime=157&allloadTime=185&mobile=webKit&nowTime=1514282162800
+user_ip=127.0.0.1&whiteScreenTime=153000&readyTime=153&allloadTime=182&mobile=webKit&nowTime=1514282161710
+user_ip=127.0.0.1&whiteScreenTime=167000&readyTime=167&allloadTime=197&mobile=webKit&nowTime=1514282160485
+user_ip=127.0.0.1&whiteScreenTime=153000&readyTime=153&allloadTime=182&mobile=webKit&nowTime=1514282164257
+
+user_ip=127.0.0.1&whiteScreenTime=155000&readyTime=156&allloadTime=197&mobile=webKit&nowTime=1514282172850
+user_ip=127.0.0.1&whiteScreenTime=154000&readyTime=154&allloadTime=191&mobile=webKit&nowTime=1514282170523
+user_ip=127.0.0.1&whiteScreenTime=157000&readyTime=158&allloadTime=196&mobile=webKit&nowTime=1514282171604
+user_ip=127.0.0.1&whiteScreenTime=156000&readyTime=156&allloadTime=185&mobile=webKit&nowTime=1514282169206
+
+user_ip=127.0.0.1&whiteScreenTime=178&readyTime=178&allloadTime=212&mobile=webKit&nowTime=1514282182779
+user_ip=127.0.0.1&whiteScreenTime=154&readyTime=154&allloadTime=182&mobile=webKit&nowTime=1514282181704
+

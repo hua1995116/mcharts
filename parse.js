@@ -1,5 +1,7 @@
 const filetools = require('./utils/filetools.js');
 const {readFile, writeFile} = filetools; 
+const mailer = require('./utils/mailto.js');
+const debounce = require('./utils/index.js').debounce;
 
 module.exports = function parse(time) {
     const config = {
@@ -10,7 +12,7 @@ module.exports = function parse(time) {
         Timetitle: '时间,白屏时间,用户可操作时间,总下载时间',
         Errortitle: '时间,错误量',
     }
-    const ERROR_DATA = 0;
+    let ERROR_DATA = 0;
     const ORIGINAL_DATA_URL = `${config.originalDir}/${time}data.txt`;
     const ERROR_DATA_URL = `${config.errorDir}/${time}error.txt`;
     const PARSE_ERROR_URL = `./charts/${config.csvDir}/${time}error.csv`;
@@ -31,6 +33,8 @@ module.exports = function parse(time) {
         //         console.log('data write right');
         //     }
         // });
+    }).catch(err => {
+        console.log(`readdata ${err}`);
     })
     
     readFile(ERROR_DATA_URL).then((data) => {
@@ -99,6 +103,10 @@ module.exports = function parse(time) {
                 console.log('error success');
             }
         })
+        .catch(err=> {
+            console.log(`error ${err}`);
+            done();
+        })
     }
     
     
@@ -117,14 +125,15 @@ module.exports = function parse(time) {
         let readyTime = 0;
         let allloadTime = 0;
         let k = 0;
-    
+        
         for(let i = 0; i < data.length; i++) {
             let value = data[i];
             if(!!value) {
                 const obj = {};
                 value = value.split('&');
                 if(value.length <= 1) {
-                   continue;
+                    ERROR_DATA++;
+                    continue;
                 }
                 value.forEach((item, i) => {
                     const name = item.split('=')[0];
@@ -132,6 +141,7 @@ module.exports = function parse(time) {
                     obj[name] = val;
                 });
                 if(obj['whiteScreenTime'] > 20000 || obj['readyTime'] > 20000 || obj['allloadTime'] > 20000) {
+                    ERROR_DATA++;
                     continue;
                 }
                 if(!time) {
@@ -143,6 +153,7 @@ module.exports = function parse(time) {
                 k++;
             } else {
                 if(time === 0 || !whiteScreenTime || !readyTime || !allloadTime) {
+                    ERROR_DATA++;
                     continue;
                 }
                 arr.push({
@@ -167,11 +178,20 @@ module.exports = function parse(time) {
         })
         newarr.unshift(config.Timetitle);
         
+        if(ERROR_DATA > 100) {
+            setTimeout(function() {
+                mailer(`异常数据已经超过${ERROR_DATA}`);
+            }, 1000 * 60 * 2)
+        }
         // 写入文件
-        writeFile(PARSE_TIME_URL,newarr.join('\n')).then(res => {
+        writeFile(PARSE_TIME_URL, newarr.join('\n')).then(res => {
             if(res === 200) {
                 console.log('time success');
             }
+        })
+        .catch(err => {
+            console.log(`time ${err}`);
+            done();
         })
     }
     /**
@@ -196,6 +216,9 @@ module.exports = function parse(time) {
             if(res === 200) {
                 console.log('mobile success');
             }
+        }).catch(err=> {
+            console.log(`mobile ${err}`);
+            done();
         })
     }
     /**
@@ -217,6 +240,8 @@ module.exports = function parse(time) {
             if(res === 200) {
                 console.log('PVUV success');
             }
+        }).catch(err=> {
+            console.log(`PVUV ${err}`);
         })
     }
 };

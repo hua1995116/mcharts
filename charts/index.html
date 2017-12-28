@@ -38,43 +38,48 @@ Highcharts.setOptions({
         backgroundColor: 'rgba(255, 255, 255, 0.05)',
     },
 });   
-var dir = './csvData/';
-var date = new Date().toLocaleDateString().replace(/\//g, '-');
-var timeurl =  dir + date + 'time.csv';
-var mobileurl = dir + date + 'mobile.csv';
-var PVUVurl = dir + date + 'PVUV.csv';
-var errorurl = dir + date + 'error.csv';
-// chartInit(document.getElementById('csv').innerHTML);
-axios.get(timeurl)
-  .then(function (response) {
-    chartInit(response.data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-axios.get(errorurl)
-  .then(function (response) {
-    chartErrorInit(response.data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-axios.get(mobileurl)
-  .then(function (response) {
-    pieInit(response.data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-axios.get(PVUVurl)
-  .then(function (response) {
-    //   console.log(response.data);
-    PVUVInit(response.data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
+var urlhash = location.hash.replace('#', '');
+var hash = urlhash ? urlhash : '';
+pages(hash);
+function pages(todayTime) {
+    var dir = './csvData/';
+    // var date = new Date().toLocaleDateString().replace(/\//g, '-');
+    var date = todayTime ? todayTime : new Date().toLocaleDateString().replace(/\//g, '-');
+    var timeurl =  dir + date + 'time.csv';
+    var mobileurl = dir + date + 'mobile.csv';
+    var PVUVurl = dir + date + 'PVUV.csv';
+    var errorurl = dir + date + 'error.csv';
+    // chartInit(document.getElementById('csv').innerHTML);
+    axios.get(timeurl)
+    .then(function (response) {
+        chartInit(response.data);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+    axios.get(errorurl)
+    .then(function (response) {
+        chartErrorInit(response.data);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+    axios.get(mobileurl)
+    .then(function (response) {
+        pieInit(response.data);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+    axios.get(PVUVurl)
+    .then(function (response) {
+        //   console.log(response.data);
+        PVUVInit(response.data);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
 
 function chartErrorInit(csv) {
     var chart = null;

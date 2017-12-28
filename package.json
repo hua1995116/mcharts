@@ -5,6 +5,7 @@
   "main": "express.js",
   "dependencies": {
     "express": "^4.16.2",
+    "nodemailer": "^4.4.1",
     "redis": "^2.8.0"
   },
   "devDependencies": {},
