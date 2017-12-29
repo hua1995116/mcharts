@@ -1,23 +1,12 @@
-user_ip=127.0.0.1&whiteScreenTime=271&readyTime=271&allloadTime=317&mobile=webKit&nowTime=1514424443053
+user_ip=111.206.221.51&whiteScreenTime=323&readyTime=2364&allloadTime=2594&mobile=ios&nowTime=1514392410173
 
-user_ip=127.0.0.1&whiteScreenTime=157&readyTime=158&allloadTime=198&mobile=webKit&nowTime=1514424510932
-user_ip=127.0.0.1&whiteScreenTime=162000&readyTime=162&allloadTime=243&mobile=webKit&nowTime=1514424509707
-user_ip=127.0.0.1&whiteScreenTime=165000&readyTime=166&allloadTime=207&mobile=webKit&nowTime=1514424509056
-user_ip=127.0.0.1&whiteScreenTime=173000&readyTime=174&allloadTime=216&mobile=webKit&nowTime=1514424508006
+user_ip=183.14.133.173&whiteScreenTime=662&readyTime=908&allloadTime=1109&mobile=webKit&nowTime=1514393271375
 
-user_ip=127.0.0.1&whiteScreenTime=152000&readyTime=152&allloadTime=203&mobile=webKit&nowTime=1514424520441
-user_ip=127.0.0.1&whiteScreenTime=157000&readyTime=158&allloadTime=199&mobile=webKit&nowTime=1514424517855
-user_ip=127.0.0.1&whiteScreenTime=168000&readyTime=168&allloadTime=207&mobile=webKit&nowTime=1514424515779
-user_ip=127.0.0.1&whiteScreenTime=175000&readyTime=175&allloadTime=215&mobile=webKit&nowTime=1514424514845
-user_ip=127.0.0.1&whiteScreenTime=159000&readyTime=159&allloadTime=198&mobile=webKit&nowTime=1514424516778
-user_ip=127.0.0.1&whiteScreenTime=165000&readyTime=165&allloadTime=204&mobile=webKit&nowTime=1514424513965
-user_ip=127.0.0.1&whiteScreenTime=160000&readyTime=161&allloadTime=201&mobile=webKit&nowTime=1514424512863
-user_ip=127.0.0.1&whiteScreenTime=164000&readyTime=165&allloadTime=205&mobile=webKit&nowTime=1514424521752
-user_ip=127.0.0.1&whiteScreenTime=165000&readyTime=165&allloadTime=206&mobile=webKit&nowTime=1514424519382
+user_ip=220.115.23.13&whiteScreenTime=703&readyTime=952&allloadTime=1327&mobile=gecko&nowTime=1514395012424
 
-user_ip=127.0.0.1&whiteScreenTime=160000&readyTime=160&allloadTime=203&mobile=webKit&nowTime=1514424530837
-user_ip=127.0.0.1&whiteScreenTime=169000&readyTime=170&allloadTime=210&mobile=webKit&nowTime=1514424531614
-user_ip=127.0.0.1&whiteScreenTime=161000&readyTime=161&allloadTime=204&mobile=webKit&nowTime=1514424530059
+user_ip=210.176.124.105&whiteScreenTime=211&readyTime=1207&allloadTime=1355&mobile=iPhone&nowTime=1514396470450
 
-user_ip=127.0.0.1&whiteScreenTime=197&readyTime=198&allloadTime=246&mobile=webKit&nowTime=1514424922162
+user_ip=111.206.221.52&whiteScreenTime=323&readyTime=2364&allloadTime=2594&mobile=ios&nowTime=1514396470451
+
+
 

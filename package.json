@@ -4,6 +4,7 @@
   "description": "",
   "main": "express.js",
   "dependencies": {
+    "axios": "^0.17.1",
     "express": "^4.16.2",
     "nodemailer": "^4.4.1",
     "redis": "^2.8.0"
