@@ -49,7 +49,7 @@ pages(hash);
 function pages(todayTime) {
     var dir = './csvData/';
     // var date = new Date().toLocaleDateString().replace(/\//g, '-');
-    var date = todayTime ? todayTime : new Date().toLocaleDateString().replace(/\//g, '-');
+    var date = todayTime ? todayTime : new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate();
     var timeurl =  dir + date + 'time.csv';
     var mobileurl = dir + date + 'mobile.csv';
     var PVUVurl = dir + date + 'PVUV.csv';
@@ -352,83 +352,104 @@ function mapipInit(json) {
         credits: {
             enabled: false
         },
-        colors: function(color) {
-            return {
-                radialGradient: {
-                    cx: 0.5,
-                    cy: 0.3,
-                    r: 0.7
-                },
-                stops: [
-                    [0, color],
-                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-                ]
-            };
-        }(),
-        // chart: {
-        //     events: {
-        //         click: function(e) {
-        //             var x = Math.round(e.xAxis[0].value),
-        //                 y = Math.round(e.yAxis[0].value);
-        //             this.get('clicks').addPoint({
-        //                 x: x,
-        //                 y: y,
-        //                 name: '[' + x + ', ' + y + ']'
-        //             });
-        //         }
-        //     }
-        // },
+        // colors: function(color) {
+        //     return {
+        //         radialGradient: {
+        //             cx: 0.5,
+        //             cy: 0.3,
+        //             r: 0.7
+        //         },
+        //         stops: [
+        //             [0, color],
+        //             [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+        //         ]
+        //     };
+        // }(),
+        colors: ['rgba(183, 28, 28,0.05)', 'rgba(183, 28, 28,0.2)', 'rgba(183, 28, 28,0.4)',
+                         'rgba(183, 28, 28,0.5)', 'rgba(183, 28, 28,0.6)', 'rgba(183, 28, 28,0.8)', 'rgba(183, 28, 28,1)'],
         mapNavigation: {
             enabled: true,
             buttonOptions: {
                 verticalAlign: 'bottom'
             }
         },
-        series: [{
-            //keys:keys,
-            data: mapData,
-            type: 'mapbubble',
-            mapData: mappoint,
-            joinBy: ['name', 'name'],
-            name: '人数',
-            states: {
-                hover: {
-                    color: '#BADA55'
-                }
-            },
-            maxSize: '5%',
-            minSize: 5,
-            negativeColor: '#FF0022',
-            zThreshold: 120,
-            showInLegend: true,
-            dataLabels: {
-                enabled: true,
-                format: '{point.name}',
-                style: {
-                    fontSize: '8px',
-                    color: '#000'
-                }
-            },
-            states: {
-                hover: {
-                    brightness: 0.8,
-                    borderWidth: 10
-                }
-            },
-            tooltip: {
-                formatter: function() {
-                    return this.point.name + " \t" + this.point.z;
-                }
-            },
-            zIndex: 1000
-        }, {
+        colorAxis: {
+            dataClasses: [{
+                to: 3,
+                color: '#e57373'
+            }, {
+                from: 3,
+                to: 10,
+                color: '#ef5350'
+            }, {
+                from: 10,
+                to: 30,
+                color: '#f44336'
+            }, {
+                from: 30,
+                to: 100,
+                color: '#e53935'
+            }, {
+                from: 100,
+                to: 300,
+                color: '#d32f2f'
+            }, {
+                from: 300,
+                to: 1000,
+                color: '#c62828'
+            }, {
+                from: 1000,
+                color: '#b71c1c'
+            }]
+        },
+        series: [
+        //     {
+        //     //keys:keys,
+        //     data: mapData,
+        //     type: 'mapbubble',
+        //     mapData: mappoint,
+        //     joinBy: ['name', 'name'],
+        //     name: '人数',
+        //     states: {
+        //         hover: {
+        //             color: '#BADA55'
+        //         }
+        //     },
+        //     maxSize: '5%',
+        //     minSize: 5,
+        //     negativeColor: '#FF0022',
+        //     zThreshold: 120,
+        //     showInLegend: true,
+        //     dataLabels: {
+        //         enabled: true,
+        //         format: '{point.name}',
+        //         style: {
+        //             fontSize: '8px',
+        //             color: '#000'
+        //         }
+        //     },
+        //     states: {
+        //         hover: {
+        //             brightness: 0.8,
+        //             borderWidth: 10
+        //         }
+        //     },
+        //     tooltip: {
+        //         formatter: function() {
+        //             return this.point.name + " \t" + this.point.z;
+        //         }
+        //     },
+        //     zIndex: 1000
+        // }, 
+        {
             // Basic China map
             data: data,
             mapData: mapArray,
             joinBy: ['name', 'name'],
             name: '人数',
             //color: '#000',
-            negativeColor: 'rgba(255, 0, 0, 0.2)',
+            // negativeColor: 'rgba(255, 0, 0, 0.2)',
+            nullColor: 'rgba(255, 0, 0, 0.2)',
             showInLegend: false,
             states: {
                 hover: {

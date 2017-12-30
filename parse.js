@@ -26,8 +26,8 @@ module.exports = function parse(time) {
 
     readFile(ORIGINAL_DATA_URL).then((data) => {
         const jsondata = parseData(data)
-        // parseTime(data);
-        // parseMobile(jsondata);
+        parseTime(data);
+        parseMobile(jsondata);
         parsePVUV(jsondata);
         // fs.writeFile(`${config.jsonDir}/${config.date}data.json`, JSON.stringify(jsondata), (err) => {
         //     if(err) {
@@ -41,7 +41,7 @@ module.exports = function parse(time) {
     })
     
     readFile(ERROR_DATA_URL).then((data) => {
-        // parseError(data);
+        parseError(data);
     })
     
 
