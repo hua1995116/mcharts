@@ -314,7 +314,7 @@ module.exports = function parse(time) {
         // console.log(JSON.parse(oldData));
         const Place = {};
         for(var i in oldData) {
-          Place[oldData[i].name] = Place[oldData[i].name] ? Place[oldData[i].name] + 1 : 1;
+          Place[oldData[i].name] = Place[oldData[i].name] ? Place[oldData[i].name] + 1 : oldData[i].value;
         } 
         console.log('city'+ JSON.stringify(newData.city));
         for(var i in newData.city) {
