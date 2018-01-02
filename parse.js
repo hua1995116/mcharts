@@ -229,6 +229,9 @@ module.exports = function parse(time) {
      * 
      * 
      * @param {Object} data parse好的数据 
+     * data: { user_ip: String,whiteScreenTime: String,readyTime: String,allloadTime: String,mobile: String, nowTime: String  },
+     * 
+     * 
      */
     function parsePVUV(data) {
         const obj = {};
@@ -256,13 +259,12 @@ module.exports = function parse(time) {
     /**
      * 
      * 
-     * @param {Object} newData
-     * {
-     *  "province": [{name: String, value: Nubmer}],
-     *  "city":[{name: String, value: Nubmer}]
-     * } 
+     * @param {Object} newData {'ip': String}
+     * @param {Number} newDataLength 
+     * @param {String} PVUV 
      */
     function mapData(newData, newDataLength, PVUV) {
+        console.log(`newData ${JSON.stringify(newData)}`);
         readFile(PARSE_PVUV_URL).then((PVData) => {
             // 判断逻辑
             const oldDataLength = PVData.split(',')[1].split(':')[1];
@@ -310,7 +312,13 @@ module.exports = function parse(time) {
             })
         }
     }
-
+    /**
+     * 
+     * 
+     * @param {Object} oldData 
+     * @param {Object} newData newData {"city":{"place":Number}}
+     * @returns Object {"place":Number}
+     */
     function mergeHandle(oldData, newData) {
         // console.log(JSON.parse(oldData));
         const Place = {};
