@@ -58,6 +58,7 @@ module.exports = function parse(time) {
         //     return a.nowTime - b.nowTime;
         // })
         data.forEach((value, index, array) => {
+            value = value.replace('\r', '');
             if(!!value) {
                 const obj = {};
                 value = value.split('&');

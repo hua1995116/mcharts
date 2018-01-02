@@ -1,0 +1,10 @@
+user_ip=222.70.121.1&whiteScreenTime=495&readyTime=685&allloadTime=855&mobile=iPhone&nowTime=1514044877049
+
+user_ip=111.206.221.49&whiteScreenTime=181&readyTime=1405&allloadTime=2173&mobile=ios&nowTime=1514046907445
+
+user_ip=183.226.210.118&whiteScreenTime=464&readyTime=8240&allloadTime=8311&mobile=webKit&nowTime=1514051120830
+user_ip=114.229.214.97&whiteScreenTime=379&readyTime=1125&allloadTime=1296&mobile=android&nowTime=1514051065702
+
+user_ip=113.108.10.5&whiteScreenTime=495&readyTime=685&allloadTime=855&mobile=iPhone&nowTime=1514044877049
+
+user_ip=183.57.53.222&whiteScreenTime=464&readyTime=8240&allloadTime=8311&mobile=webKit&nowTime=1514051120830user_ip=14.17.3.65&whiteScreenTime=495&readyTime=685&allloadTime=855&mobile=iPhone&nowTime=1514044877049user_ip=112.90.82.236&whiteScreenTime=464&readyTime=8240&allloadTime=8311&mobile=webKit&nowTime=1514051120830
