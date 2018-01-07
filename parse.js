@@ -72,7 +72,11 @@ module.exports = function parse(time) {
         })
         return arr;
     }
-
+    /**
+     * 
+     * 
+     * @param {lines} data 
+     */
     function parseError(data) {
         data = data.split('\n');
         const arr = [];
@@ -245,7 +249,11 @@ module.exports = function parse(time) {
 
         mapData(obj, UV, `PV:${PV},UV:${UV}`);
     }
-
+    /**
+     * 
+     * 
+     * @param {String} data 
+     */
     function writePVUV(data) {
         // 写入文件
         writeFile(PARSE_PVUV_URL, data).then(res => {
@@ -287,7 +295,14 @@ module.exports = function parse(time) {
             console.log(err);
         })
     } 
-
+    /**
+     * 
+     * 
+     * @param {Number} oldDataLength 
+     * @param {Number} newDataLength 
+     * @param {Object} newData 
+     * @param {String} PVUV 
+     */
     function parseMap(oldDataLength, newDataLength, newData, PVUV) {
         console.log(oldDataLength, newDataLength, newData)
         if(newDataLength > oldDataLength) {
