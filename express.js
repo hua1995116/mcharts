@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
 });
 app.use(router);
 app.use(performance({
-	time: 10, // 秒为单位
+	time: 1000, // 秒为单位
 	originalDir: './originalData', // 数据的目录
 	errorDir: './errorData' // 报错的目录
 }))
