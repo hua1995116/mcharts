@@ -5,7 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-<script src="./export.min.js"></script>
+    <script>
+        var code_start = (new Date()).getTime();
+        (function() {
+            window.logInfo = {};  //统计页面加载时间
+            window.logInfo.openTime = performance.timing.navigationStart || (new Date().getTime());
+            window.logInfo.whiteScreenTime = +new Date() - window.logInfo.openTime;
+            document.addEventListener('DOMContentLoaded',function (event) {
+                window.logInfo.readyTime = +new Date() - window.logInfo.openTime;
+            });
+            window._error_storage_ = [];
+            function errorhandler(){
+                // 用于记录当前的错误
+                // console.log([].slice.call(arguments));
+                window._error_storage_&&window._error_storage_.push([].slice.call(arguments));
+            } 
+            window.addEventListener && window.addEventListener("error", errorhandler);
+            window.onload = function () {
+                window.logInfo.allloadTime = +new Date() - window.logInfo.openTime;
+                window.logInfo.nowTime = new Date().getTime();
+                var timname = {
+                    whiteScreenTime: '白屏时间',
+                    readyTime: '用户可操作时间',
+                    allloadTime: '总下载时间',
+                    mobile: '使用设备',
+                    nowTime: '时间',
+                };
+                var logStr = '';
+                for (var i in timname) {
+                    console.warn(timname[i] + ':' + window.logInfo[i] + 'ms');
+                    if (i === 'mobile') {
+                        logStr += '&' + i + '=' + window.logInfo[i];
+                    } else {
+                        logStr += '&' + i + '=' + window.logInfo[i];
+                    }
+                    
+                }
+                (new Image()).src = '/action?' + logStr;
+            };
+            var times = 3,
+            appendScript = function appendScript() {
+                var sc = document.createElement("script");
+                sc.async = !0,
+                sc.src = './timing.js',
+                sc.crossOrigin = "anonymous",
+                sc.onerror = function() {
+                    times--,
+                    times > 0 && setTimeout(appendScript, 1500)
+                },
+                document.head && document.head.appendChild(sc);
+            };
+            setTimeout(appendScript, 1500);
+        })();
+        var code_end = (new Date()).getTime();
+        console.log('--------codeTime----------', code_end - code_start);
+    </script>
+    <!-- <script src="./export.min.js"></script> -->
 </head>
 <body>
     <div>2</div>
