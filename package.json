@@ -9,7 +9,9 @@
     "nodemailer": "^4.4.1",
     "redis": "^2.8.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "querystring": "^0.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hua1995116/mcharts.git"
