@@ -95,8 +95,7 @@ function(e, n, o) {
                 t = s[o],
                 r = t && new Date - t < 2e3;
                 if (s[o] = new Date, r) return;
-                i.
-            default.post(n, JSON.stringify({
+                i.default.post(n, JSON.stringify({
                     message: e.message,
                     stack: e.stack || (e.error ? e.error.stack: void 0),
                     filename: e.filename,

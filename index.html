@@ -7,21 +7,24 @@
     <title>Document</title>
     <script>
         var code_start = (new Date()).getTime();
-        window.TuiAperformance = {};
-        window.TuiAperformance.openTime = performance.timing.navigationStart || (new Date().getTime());
-        document.addEventListener('DOMContentLoaded',function (event) {
-            window.TuiAperformance.domready = +new Date() - window.TuiAperformance.openTime;
-        });
-        window.onload = function () {
-            window.TuiAperformance.onload = +new Date() - window.TuiAperformance.openTime;
-        };
         (function() {
+            window.TuiAperformance = {};
+            window.TuiAperformance.openTime = performance.timing.navigationStart || (new Date().getTime());
+            document.addEventListener('DOMContentLoaded',function (event) {
+                window.TuiAperformance.domready = +new Date() - window.TuiAperformance.openTime;
+            });
+            window.onload = function () {
+                window.TuiAperformance.onload = +new Date() - window.TuiAperformance.openTime;
+            };
             window._error_storage_ = [];
             function errorhandler(){
                 // 用于记录当前的错误
+                console.log('-----------errsta');
+                console.log(arguments);
+                console.log('-----------errend');               
                 window._error_storage_&&window._error_storage_.push([].slice.call(arguments));
             } 
-            window.addEventListener && window.addEventListener("error", errorhandler);
+            window.addEventListener && window.addEventListener("error", errorhandler, true);
             var times = 3,
             appendScript = function appendScript() {
                 var sc = document.createElement("script");
@@ -36,9 +39,8 @@
             };
             setTimeout(appendScript, 1500);
         })();
-        var code_end = (new Date()).getTime();
-        window.TuiAperformance.codetiming = code_end - code_start;
-        console.log('--------codeTime----------', code_end - code_start);
+        window.TuiAperformance.codetiming = (new Date()).getTime() - code_start;
+        console.log('--------codeTime----------', window.TuiAperformance.codetiming);
     </script>
     <!-- <script src="./export.min.js"></script> -->
 </head>

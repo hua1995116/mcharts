@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>var code_start = (new Date()).getTime();</script>
+    <script src="http://tomfeng.cn:8081/timing.js"></script>
+    <!-- <script src="./export.min.js"></script> -->
+    <script>
+        var code_end = (new Date()).getTime();
+        window.TuiAperformance.codetiming = code_end - code_start;
+        console.log('--------codeTime----------', code_end - code_start);
+    </script>
+</head>
+<body>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div> 
+<script>
+    window.TuiAperformance.whitescreen = +new Date() - window.TuiAperformance.openTime;
+</script>
+<script>
+    var body = document.querySelector('body');
+    var list = '';
+    for(var i = 0; i < 1000; i++) {
+        list += '<div>'+i+'</div>'
+    }
+    body.innerHTML = list;
+</script>
+<script src="http://wechatfe.github.io/vconsole/lib/vconsole.min.js?v=3.0.0.0"></script>
+<script>
+	var vConsole = new VConsole();
+</script>
+</body>
+</html>
