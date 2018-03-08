@@ -1,7 +1,7 @@
 const express = require('express');
 var qs = require('querystring');
 const parse = require('url').parse;
-require('./utils/date.js');
+require('../utils/date.js');
 // require('./mysql');
 
 const mysql = require('mysql');
@@ -16,9 +16,9 @@ const pool = mysql.createPool({
 // const performance = require('./lib/performance.js');
 const app = express();
 const router = express.Router();
-const parseData = require('./parse.js');
+// const parseData = require('./parse.js');
 router.get('/', function (req, res, next) {
-  req.url = './index.html';
+  req.url = './index_test.html';
   next();
 });
 app.use(router);
@@ -43,7 +43,7 @@ app.get('/performance', (req, res, next) => {
 			return;
 		}
 		// connected! (unless `err` is set)
-		const userAddSql = 'INSERT INTO PERFORMANCE SET ?';
+		const userAddSql = 'insert into performance_test set ?';
 		const date = new Date().format();
 
 		const useAdd_Params = {
